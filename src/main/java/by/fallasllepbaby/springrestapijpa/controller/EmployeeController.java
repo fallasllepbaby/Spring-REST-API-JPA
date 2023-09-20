@@ -1,10 +1,22 @@
 package by.fallasllepbaby.springrestapijpa.controller;
 
 import by.fallasllepbaby.springrestapijpa.model.Employee;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class EmployeeController {
+
+    @Value("${app.name}")
+    private String appName;
+
+    @Value("${app.version}")
+    private String appVersion;
+
+    @GetMapping("/version")
+    public String getAppDetails() {
+        return appName + " - " + appVersion;
+    }
 
     @GetMapping("/employees")
     public String getEmployees() {
