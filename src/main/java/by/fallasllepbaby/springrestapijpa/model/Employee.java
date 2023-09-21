@@ -3,9 +3,15 @@ package by.fallasllepbaby.springrestapijpa.model;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.ToString;
 import lombok.Setter;
 import lombok.Getter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Setter
 @Getter
@@ -16,22 +22,27 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @NotNull(message = "Name should not be null")
     private String name;
 
-    @Column(name = "age")
-    private Long age;
+    private Long age = 0L;
 
-    @Column(name = "location")
     private String location;
 
-    @Column(name = "email")
+    @Email(message = "Please enter the valid email address")
     private String email;
 
-    @Column(name = "department")
+    @NotNull(message = "Department should not be null")
     private String department;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Date updatedAt;
 
 }

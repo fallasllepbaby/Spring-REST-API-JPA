@@ -2,6 +2,7 @@ package by.fallasllepbaby.springrestapijpa.controller;
 
 import by.fallasllepbaby.springrestapijpa.model.Employee;
 import by.fallasllepbaby.springrestapijpa.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,14 +25,14 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    public Employee saveEmployee(@RequestBody Employee employee) {
+    public Employee saveEmployee(@Valid @RequestBody Employee employee) {
         return eService.saveEmployee(employee);
     }
 
     @PutMapping("/employees/{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
-        System.out.println("updating employee data for the id " + id);
-        return employee;
+        employee.setId(id);
+        return eService.updateEmployee(employee);
     }
 
     @DeleteMapping("/employees")
