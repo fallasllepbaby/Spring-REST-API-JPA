@@ -2,9 +2,7 @@ package by.fallasllepbaby.springrestapijpa.controller;
 
 import by.fallasllepbaby.springrestapijpa.model.Employee;
 import by.fallasllepbaby.springrestapijpa.service.EmployeeService;
-import by.fallasllepbaby.springrestapijpa.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,13 +19,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/{id}")
-    public String getEmployee(@PathVariable("id") Long id) {
-        return "Emloyee id is " + id;
+    public Employee getEmployee(@PathVariable("id") Long id) {
+        return eService.getSingleEmployee(id);
     }
 
     @PostMapping("/employees")
-    public String saveEmployee(@RequestBody Employee employee) {
-        return "saving the employee details to the database " + employee;
+    public Employee saveEmployee(@RequestBody Employee employee) {
+        return eService.saveEmployee(employee);
     }
 
     @PutMapping("/employees/{id}")
