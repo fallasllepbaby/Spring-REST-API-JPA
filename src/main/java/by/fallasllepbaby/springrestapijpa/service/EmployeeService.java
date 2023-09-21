@@ -5,7 +5,7 @@ import by.fallasllepbaby.springrestapijpa.model.Employee;
 import java.util.List;
 
 public interface EmployeeService {
-    List<Employee> getEmployees();
+    List<Employee> getEmployees(int pageNumber, int pageSize);
 
     Employee saveEmployee(Employee employee);
 
@@ -20,4 +20,8 @@ public interface EmployeeService {
     List<Employee> getEmployeesByNameAndLocation(String name, String location);
 
     List<Employee> getEmployeesByKeyword(String name);
+
+    List<Employee> getEmployeesByNameOrLocation(String name, String location);
+
+    Integer deleteByEmployeeName(String name);
 }
