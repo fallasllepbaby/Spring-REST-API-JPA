@@ -17,4 +17,8 @@ public class Department {
     private Long id;
 
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 }
