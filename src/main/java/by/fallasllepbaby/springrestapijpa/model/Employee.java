@@ -3,6 +3,7 @@ package by.fallasllepbaby.springrestapijpa.model;
 import by.fallasllepbaby.springrestapijpa.request.EmployeeRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "tbl_employee")
+@NoArgsConstructor
 public class Employee {
 
     @Id
