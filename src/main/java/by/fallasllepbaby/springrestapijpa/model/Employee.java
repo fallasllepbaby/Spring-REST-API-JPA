@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Setter
 @Getter
 @ToString
@@ -21,9 +23,12 @@ public class Employee {
 
     private String name;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "department_id")
-    private Department department;
+    private Department department;*/
+
+    @OneToMany(mappedBy = "employee")
+    private List<Department> departments;
 
     public Employee(EmployeeRequest req) {
         this.name = req.getName();

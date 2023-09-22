@@ -18,10 +18,10 @@ public class Department {
 
     private String name;
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "employee_id")
-    private Employee employee;*/
-
-    @OneToOne(mappedBy = "department")
     private Employee employee;
+
+    /*@OneToOne(mappedBy = "department")
+    private Employee employee;*/
 }
